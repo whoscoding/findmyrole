@@ -1,39 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/WindMillCode/Template/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/WindMillCode/Template/tree/master)
+# Summary
 
-## Getting Started
+## Projects
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## General Description
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features include
+Only members of the project can read the README.md from the ignore folder
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Issues
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Aspects
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Challenges
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Enjoyed
 
-## Learn More
+## Leadership
 
-To learn more about Next.js, take a look at the following resources:
+## Done Different
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# Resources
 
-## Deploy on Vercel
+## Docs
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Media
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# findmyrole
+
+
+# Metrics
+
+## Users
+
+## Netowrk
+
+## Storage
+
+
+# Stack
+
+## Frontend
+* Framework - Angular :15.1.0, node 18.12.1
+* I18N  - ngx-translate: 14.0.0
+* time management
+* online forms- angular reactive forms:15.1.0
+* icons lib - font awesome
+* component lib- @windmillcode/wml-components
+* unit testing jasmine:4.20
+
+### UX
+[Figma](https://www.figma.com/file/Oi98Uzu3nSF3fbrzvW9XPh/FindMyRole?node-id=51%3A379&t=Uw7dg3y9KiFTAO70-0)
+
+
+## Backend
+
+* framework flask v 2.2.2,python v3.11.1
+* unit testing - pytest v 7.2.1
+* email -sendgrid
+
+## Mobile
+* Framework - Flutter
+
+
+### E2E Testing
+* java selenium
+
+
+## Hosting
+
+### frontend hosting
+
+### backend hosting
+
+
+## Logging
+
+### Monitoring
+Sentry
+
+
+## DevOps
+
+### CI/CD/CM
+* CircleCi
+
+### Version Control
+* Github
+
+## Communication
+[Trello](https://trello.com/b/60H9VGwz/main-application)
+* [invite link](https://www.figma.com/file/Oi98Uzu3nSF3fbrzvW9XPh/FindMyRole?node-id=51%3A379&t=Uw7dg3y9KiFTAO70-0)
+[Slack](https://app.slack.com/client/T04TJTMQ3NE/C04TJTRNCUS)
+* [invite link](https://join.slack.com/t/findmyrole/shared_invite/zt-1r14nvvlg-NC8TE8AauVL1X2nXia4f7g)
+
+
+
+## Integrations
+
+
+Stripe
+  Paypal
+Twilio
+  Sendgrid for email

@@ -1,0 +1,150 @@
+{
+  "global":{
+    "website":"FINDMYROLE",
+    "logoImgAlt":"FINDMYROLE",
+    "errorRequired":"This field is required",
+    "errrorMin0":"At least one value must be provided",
+    "avatarImgAlt":"Avatar Img",
+    "wmlChipsplaceholder":"Type your value then press enter to see it appear",
+    "wmlChipsuserInputsAriaLabel" :"User Inputs",
+    "wmlChipsremoveChipAriaLabel" : "remove",
+    "fillOutForm":"Please fill out all required fields",
+    "loginAgain":"Please login again to continue using your account",
+    "logoutError":"There was an issue while trying to log you out of your account please try again or contact support if the issue persists",
+    "overlayLoading":"Loading ...",
+    "siteUnderConstruction":"Site Under Construction"
+  },
+  "notFound":{
+    "lines":[
+      "404",
+      "Whoops! This is not what you were looking for",
+      "But you just found the ball we'd lost, thanks. Try your luck by going back to the home page."
+    ],
+    "someImgAlt":"Tech Ball"
+  },
+  "app":{
+
+  },
+  "NavMain":{
+    "title":"FINDMYROLE",
+    "lightMode":"Light Mode",
+    "darkMode":"Dark Mode",
+    "mainMenuIconAriaLabel":"Click me to open the main menu",
+    "mainMenuItems":[
+      "Home",
+      "Profile",
+      "Sample",
+      "Results"
+    ]
+  },
+  "HomeMain":{
+    "title":"Find Your Role, Master The Interview",
+    "mainDesc":"FindMyRole utilizes AI-generated questions that are tailored to the specific job and company you’re applying to, which are then matched with sample answers that reflect your unique resume/cover letter experience and skills.",
+    "viewSampleBtn":"VIEW SAMPLE",
+    "freeTrailBtn":"JOIN WAITLIST",
+    "worksSubtitle":"How FindMyRole works",
+    "workSteps":[
+      "Upload resume/cover letter",
+      "Add job role/company",
+      "View Results"
+    ],
+    "freeTrialSubtitle":"Try For Free!",
+    "resumeUpload":{
+      "title":"Upload your resume!",
+      "button":"Upload your resume",
+      "subText":"as .pdf or .docx"
+    },
+    "benefits":{
+      "title":"How FindMyRole can benefit you",
+      "sections":[
+        {
+          "title":"Personalized Interview Preparation",
+          "desc":"FindMyRole's AI-generated questions are tailored to the specific job and company the your applying to, allowing you to prepare for potential interview questions in a personalized way. This can help you feel more confident and better prepared for the interview."
+        },
+        {
+          "title":"Enhanced Communication Skills",
+          "desc":"FindMyRole's AI-generated questions are tailored to the specific job and company the your applying to, allowing you to prepare for potential interview questions in a personalized way. This can help you feel more confident and better prepared for the interview."
+        },
+        {
+          "title":"Time savings",
+          "desc":" You don't have to spend as much time researching and practicing potential interview questions, as FindMyRole provides you with the questions and answers you need. This can free up time for other job search activities, such as applying to more jobs or networking."
+        }
+      ]
+    },
+    "ratings":{
+      "subTitle":"What our customers are saying!",
+      "avatarAlt":"Default Avatar"
+    }
+  },
+  "DefaultLayout":{
+    "footer":"@2023 FindMyRole,LLC"
+  },
+  "SampleMain":{
+    "title":"Sample Generated Results",
+    "companyLogoAlt":"NBA logo",
+    "position":{
+      "title":"Job Role"
+    },
+    "sections":{
+      "results":{
+        "title":"Results",
+        "questions":{
+          "title":"Questions",
+          "bullets":[
+            "In your opinion, what are some of the biggest challenges facing the NBA in terms of technology and software development? How would you address these challenges?",
+            "The NBA collects a vast amount of data on players, teams, and games. How would you go about analyzing this data and presenting it in a way that is useful to coaches, players, and fans?",
+            "What experience do you have with agile software development methodologies? How do you prioritize tasks and manage your time in a fast-paced, constantly changing environment?"
+          ]
+        },
+        "answers":{
+          "title":"Answers",
+          "bullets":[
+            "Some of the biggest challenges for the NBA in terms of technology and software development include scalability and effective data management and analysis. These challenges require creative solutions and innovative approaches to ensure a seamless user experience and deliver actionable insights for players and teams.",
+            "Designing software applications that meet the needs of the NBA's diverse audience requires a user-centric approach, incorporating feedback and insights from fans, coaches, and players. By prioritizing usability and delivering a seamless user experience, we can ensure that our applications are both engaging and accessible to all fans, regardless of their level of interest in the game.",
+            "I have experience with agile software development methodologies, and I understand the importance of prioritizing tasks and managing time effectively in a fast-paced environment. I believe that communication and collaboration are key to success in agile teams, and I strive to keep my team informed and engaged throughout the development process. I also understand the importance of adapting to changing requirements and being flexible in my approach to problem-solving."
+          ]
+        }
+      },
+      "facts":{
+        "title":"Facts"
+      },
+      "news":{
+        "title":"Latest News"
+      },
+      "questions":{
+        "title":"Questions"
+      }
+    }
+  },
+  "SectionsTwo":{
+    "filter":"Filter"
+  },
+  "ProfileOneMain":{
+    "title":"Welcome, Alou",
+    "lastAnalysis":{
+      "title":"Last Result"
+    },
+    "uploadForm":{
+      "title":"Upload resume or job role description for new results",
+      "notify":"Not required unless you want to upload new resume",
+      "submit":"Submit",
+      "jobDescField":{
+        "label":"Job Description",
+        "placeholder":"Copy and paste job description...",
+        "error":{
+          "required":"A job description is required"
+        }
+      }
+    },
+    "helpUs":{
+      "title":"Help us get to know you!",
+      "desc":"Answer a few questions that will help us better understand how to improve your experience.",
+      "mabyeLater":"Maybe Later",
+      "submitPersonalInfo":"Yes, take me!"
+    }
+  },
+  "AvatarOne":{
+    "iconAlt":"Avatar Image"
+  }
+
+}

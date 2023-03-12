@@ -1,0 +1,18 @@
+const config = ({ env }) => ({
+    // ...
+    upload: {
+      provider: 's3',
+      providerOptions: {
+        accessKeyId: env('AWS_ACCESS_KEY_ID'),
+        secretAccessKey: env('AWS_ACCESS_SECRET'),
+        region: env('AWS_REGION'),
+        params: {
+          Bucket: env('AWS_BUCKET'),
+        },
+        cdnUrl: env('S3_CDN_URL', process.env.S3_CDN_URL),
+      },
+    },
+    // ...
+  });
+  
+  export default config;

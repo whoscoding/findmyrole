@@ -1,0 +1,11 @@
+#root profile-one-main{
+  wml-form  wml-field:nth-child(1) .WmlInputMainPodInput1{
+    height: calc(500/16 * 1rem);
+    &::placeholder{
+      color:var(--wml-white);
+    }
+    color:var(--wml-white);
+    background-color: var(--wml-dark-grey);
+    font-size: $display-x-small;
+  }
+}
