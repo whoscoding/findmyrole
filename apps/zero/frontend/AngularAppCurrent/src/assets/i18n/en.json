@@ -12,7 +12,8 @@
     "loginAgain":"Please login again to continue using your account",
     "logoutError":"There was an issue while trying to log you out of your account please try again or contact support if the issue persists",
     "overlayLoading":"Loading ...",
-    "siteUnderConstruction":"Site Under Construction"
+    "siteUnderConstruction":"Site Under Construction",
+    "formSubmitSuccess":"Form Submitted Sucessfully"
   },
   "notFound":{
     "lines":[

@@ -29,7 +29,7 @@ export class NotifyBannerComponent  {
   classPrefix = this.utilService.generateClassPrefix('NotifyBanner')
   @HostBinding('class') myClass: string = this.classPrefix(`View`);
   ngUnsub= new Subject<void>()
-  @Input('meta') meta :NotifyBannerMeta = new NotifyBannerMeta();
+  @Input('params') params :NotifyBannerParams = new NotifyBannerParams();
 
   ngOnInit(){}
 
@@ -41,8 +41,8 @@ export class NotifyBannerComponent  {
 }
 
 
-export class NotifyBannerMeta {
-  constructor(params:Partial<NotifyBannerMeta>={}){
+export class NotifyBannerParams {
+  constructor(params:Partial<NotifyBannerParams>={}){
     Object.assign(
       this,
       {

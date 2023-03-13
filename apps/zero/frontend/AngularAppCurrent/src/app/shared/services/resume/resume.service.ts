@@ -28,7 +28,8 @@ export class ResumeService {
 }
 
 let submitFormToAnalyzeResumeLoad  = (uiBody:SubmitFormToAnalyzeResumeUIRequestBody): SubmitFormToAnalyzeResumeAPIRequestBody=>{
-  let apiBody = new SubmitFormToAnalyzeResumeAPIRequestBody()
+
+  let apiBody = new SubmitFormToAnalyzeResumeAPIRequestBody({data:uiBody})
   return apiBody
 }
 
@@ -38,7 +39,7 @@ let submitFormToAnalyzeResumeSuccess = (apiBody:SubmitFormToAnalyzeResumeAPIResp
 }
 
 
-class SubmitFormToAnalyzeResumeUIRequestBody {
+export class SubmitFormToAnalyzeResumeUIRequestBody {
   constructor(params:Partial<SubmitFormToAnalyzeResumeUIRequestBody>={}){
     Object.assign(
       this,
@@ -47,9 +48,11 @@ class SubmitFormToAnalyzeResumeUIRequestBody {
       }
     )
   }
+  jobDesc: string
+  resume: Array<any>
 }
 
-class SubmitFormToAnalyzeResumeUIResponseBody {
+export class SubmitFormToAnalyzeResumeUIResponseBody {
   constructor(params:Partial<SubmitFormToAnalyzeResumeUIResponseBody>={}){
     Object.assign(
       this,
@@ -61,7 +64,7 @@ class SubmitFormToAnalyzeResumeUIResponseBody {
 }
 
 
-class SubmitFormToAnalyzeResumeAPIRequestBody {
+export class SubmitFormToAnalyzeResumeAPIRequestBody {
   constructor(params:Partial<SubmitFormToAnalyzeResumeAPIRequestBody>={}){
     Object.assign(
       this,
@@ -70,10 +73,13 @@ class SubmitFormToAnalyzeResumeAPIRequestBody {
       }
     )
   }
-  data = {}
+  data: {
+    jobDesc: string
+    resume: Array<any>
+  }
 }
 
-class SubmitFormToAnalyzeResumeAPIResponseBody {
+export class SubmitFormToAnalyzeResumeAPIResponseBody {
   constructor(params:Partial<SubmitFormToAnalyzeResumeAPIResponseBody>={}){
     Object.assign(
       this,

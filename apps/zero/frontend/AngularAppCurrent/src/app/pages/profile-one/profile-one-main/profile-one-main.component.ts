@@ -11,7 +11,7 @@ import { BaseService } from '@core/base/base.service';
 
 // rxjs
 import { Subject } from 'rxjs';
-import { takeUntil,tap } from 'rxjs/operators';
+import { delay, takeUntil,tap } from 'rxjs/operators';
 
 // misc
 
@@ -26,6 +26,7 @@ import { WMLField, WMLFieldTextAreaFieldParams } from '@windmillcode/wml-field';
 import { FormsService } from '@shared/services/forms/forms.service';
 import { FormArray } from '@angular/forms';
 import { ResumeService } from '@shared/services/resume/resume.service';
+import { WmlNotifyBarModel, WmlNotifyService } from '@windmillcode/wml-notify';
 
 
 
@@ -49,7 +50,6 @@ export class ProfileOneMainComponent  {
     public baseService:BaseService,
     public formsService:FormsService,
     public resumeService:ResumeService
-
   ) { }
 
   classPrefix = this.utilService.generateClassPrefix('ProfileOneMain')
@@ -134,11 +134,15 @@ export class ProfileOneMainComponent  {
   })
 
   submitBtnClick = ()=>{
+    // @ts-ignore
     this.resumeService.submitFormToAnalyzeResume(this.formsService.profileOneMain.mainForm.value)
     .pipe(
       takeUntil(this.ngUnsub),
       tap(this.baseService.openOverlayLoading),
-      tap((res)=>console.log),
+      delay(5000),
+      tap(()=>{
+        this.baseService.generateWMLNote("global.formSubmitSuccess")
+      }),
       this.baseService.closeOverlayLoading
     )
     .subscribe()

@@ -12,12 +12,11 @@ import { WmlLabelParams, WMLField, WMLFieldTextAreaFieldParams } from '@windmill
 import { WmlInputComponent, WmlInputParams } from '@windmillcode/wml-input';
 import { WmlPopupComponentParams } from '@windmillcode/wml-popup';
 import { WmlNotifyBarModel, WmlNotifyBarType, WmlNotifyService } from '@windmillcode/wml-notify';
-import { NotifyBannerComponent, NotifyBannerMeta } from '@shared/components/notify-banner/notify-banner.component';
+import { NotifyBannerComponent, NotifyBannerParams } from '@shared/components/notify-banner/notify-banner.component';
 import { WMLButton, WMLCustomComponent, WMLUIProperty } from '@windmillcode/wml-components-base';
 import { WMLOptionsButton, WmlOptionsComponent, WMLOptionsParams } from '@windmillcode/wml-options';
 import { WMLChipsParams, WmlChipsComponent } from '@windmillcode/wml-chips';
 import { UtilityService } from '@core/utility/utility.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +25,8 @@ export class BaseService {
 
   constructor(
     private utilService:UtilityService,
-    public wmlNotifyService:WmlNotifyService
+    public wmlNotifyService:WmlNotifyService,
+    public notifyService:WmlNotifyService
   ) { }
 
   appCdRef!:ChangeDetectorRef
@@ -40,9 +40,7 @@ export class BaseService {
     })
   )
 
-
-
-  updateOverlayLoadingText:string = "app.overlayLoading"
+  updateOverlayLoadingText:string = "global.overlayLoading"
   closeOverlayLoading = finalize(()=>{
 
     this.toggleOverlayLoadingSubj.next(false)
@@ -50,7 +48,7 @@ export class BaseService {
   openOverlayLoading = ()=>{
     this.toggleOverlayLoadingSubj.next(true)
   }
-  playSiteAudioSubj = new Subject<boolean>()
+
   toggleMobileNavSubj = new Subject<boolean>()
   togglePopupSubj =new Subject<boolean>()
 
@@ -58,19 +56,26 @@ export class BaseService {
   closePopup = ()=>{
     this.togglePopupSubj.next(false)
   }
-  generateWMLNote = (i18nKey:string ="Success",type:WmlNotifyBarType=WmlNotifyBarType.Success,autoHide=false )=>{
+
+
+
+  generateWMLNote = (i18nKey:string ="Success",type:WmlNotifyBarType=WmlNotifyBarType.Success,autoHide=false,autoOpen=true )=>{
     type = type ?? WmlNotifyBarType.Success
-    return  new WmlNotifyBarModel({
+    let note =new WmlNotifyBarModel({
       type,
       autoHide,
       msgtype:"custom",
       custom:new WMLCustomComponent({
         cpnt:NotifyBannerComponent,
-        meta:new NotifyBannerMeta({
+        meta:new NotifyBannerParams({
           i18nKey
         })
       })
     })
+    if(autoOpen){
+      this.wmlNotifyService.create(note)
+    }
+    return  note
   }
 
   generateInputFormField=(labelValue:string,fieldFormControlName,fieldParentForm:FormGroup,errorMsgs?:WmlLabelParams["errorMsgs"],selfType?:WMLField["self"]["type"])=>{
