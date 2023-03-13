@@ -24,6 +24,8 @@ import { CSSVARS } from '@core/utility/common-utils';
 import { WMLForm } from '@windmillcode/wml-form';
 import { WMLField, WMLFieldTextAreaFieldParams } from '@windmillcode/wml-field';
 import { FormsService } from '@shared/services/forms/forms.service';
+import { FormArray } from '@angular/forms';
+import { ResumeService } from '@shared/services/resume/resume.service';
 
 
 
@@ -45,7 +47,8 @@ export class ProfileOneMainComponent  {
     public utilService:UtilityService,
     public configService:ConfigService,
     public baseService:BaseService,
-    public formsService:FormsService
+    public formsService:FormsService,
+    public resumeService:ResumeService
 
   ) { }
 
@@ -88,16 +91,8 @@ export class ProfileOneMainComponent  {
 
   })
 
-  submitBtn = new ButtonOneParams({
-    text:new WMLUIProperty({
-      text:"ProfileOneMain.uploadForm.submit",
-      style:{
-        textAlign:"center",
-        margin:"0",
-        padding:"0 "+CSSVARS.spacing9
-      }
-    })
-  })
+
+  formVars = ENV.profileOneMain.mainForm
 
   resumeUpload = new FileUploadParams({
     border:new WMLUIProperty({
@@ -113,10 +108,9 @@ export class ProfileOneMainComponent  {
     }),
     subText:new WMLUIProperty({
       text:"HomeMain.resumeUpload.subText"
-    })
+    }),
+    formArray:this.formsService.profileOneMain.mainForm.controls[this.formVars.resumeFormControlName] as unknown as FormArray
   })
-
-  formVars = ENV.profileOneMain.mainForm
 
 
   jobDescField = this.baseService.generateTextAreaFormField({
@@ -138,6 +132,33 @@ export class ProfileOneMainComponent  {
   wmlForm =  new WMLForm({
     fields: this.fields,
   })
+
+  submitBtnClick = ()=>{
+    this.resumeService.submitFormToAnalyzeResume(this.formsService.profileOneMain.mainForm.value)
+    .pipe(
+      takeUntil(this.ngUnsub),
+      tap(this.baseService.openOverlayLoading),
+      tap((res)=>console.log),
+      this.baseService.closeOverlayLoading
+    )
+    .subscribe()
+
+  }
+  submitBtn = new ButtonOneParams({
+    text:new WMLUIProperty({
+      text:"ProfileOneMain.uploadForm.submit",
+      style:{
+        textAlign:"center",
+        margin:"0",
+        padding:"0 "+CSSVARS.spacing9
+      }
+    }),
+    button:new WMLUIProperty({
+      click:this.submitBtnClick
+    })
+  })
+
+
   initForm = ()=>{
     this.jobDescField.deleteLabel()
   }
@@ -155,9 +176,6 @@ export class ProfileOneMainComponent  {
       text:"ProfileOneMain.helpUs.submitPersonalInfo"
     })
   })
-
-
-
 
   ngOnInit(): void {
     this.initForm()

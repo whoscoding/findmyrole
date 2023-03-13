@@ -13,6 +13,7 @@ export class FormsService {
   profileOneMain={
     mainForm:new FormGroup({
       [ENV.profileOneMain.mainForm.jobDescFormControlName]:new FormControl("",[Validators.required]),
+      [ENV.profileOneMain.mainForm.resumeFormControlName]:new FormArray([]),
     })
   }
 }

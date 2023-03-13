@@ -72,9 +72,6 @@ class APIServerError(APIError):
   description = "The server is having an issue processing the request please contact developer support"
 
 
-sg = sendgrid.SendGridAPIClient(
-    api_key=CONFIGS.azure_email["twillio_sendgrid_api_key"]
-)
 
 
 def print_if_dev(item,pretty=False):

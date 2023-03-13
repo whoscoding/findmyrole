@@ -20,8 +20,13 @@ Set-Content -Path SQLALCHEMY_PYMSSQL_0_CONN_STRING           -Value "mssql+pyodb
 
 Set-Content -Path RESTDBIO_SERVER_API_KEY_0                  -Value ""
 
-$ProjectDir =  $HOME + "\My_Notebook\project_template\apps\zero\backend\flask\dev"
-$RunScriptDir = $HOME + "\My_Notebook\project_template\ignore\"+$scriptUser
+
+$path = $MyInvocation.MyCommand.Path
+if (!$path) {$path = $psISE.CurrentFile.Fullpath}
+if ($path)  {$path = Split-Path $path -Parent}
+
+$ProjectDir =   $path + "\..\..\apps\zero\backend\flask\dev"
+$RunScriptDir = $path
 Set-Location $ProjectDir
 python app.py
 # waitress-serve --listen=*:5000 --threads=100  app:app

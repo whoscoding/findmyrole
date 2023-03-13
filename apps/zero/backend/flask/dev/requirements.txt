@@ -8,14 +8,10 @@ pyngrok
 flask-ngrok
 werkzeug
 sendgrid
-msal
 faker
 pytz
 sqlalchemy
 pyodbc
-moralis
-azure-ad-verify-token
-
 
 translatepy
 pytest

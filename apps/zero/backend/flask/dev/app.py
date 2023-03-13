@@ -14,13 +14,8 @@ from flask import Flask, request, redirect
 
 
 
-from news import mynews
+from resume import myresume
 from healthcheck import myhealthcheck
-from spotify import myspotify
-from blockchain import myblockchain
-from events import myevents
-from auth import myauth
-from collegiate import mycollegiate
 
 
 
@@ -34,13 +29,8 @@ if os.getenv("FLASK_BACKEND_ENV") == "DEV":
   app.config.update(
     DEBUG = True
   )
-app.register_blueprint(mynews)
+app.register_blueprint(myresume)
 app.register_blueprint(myhealthcheck)
-app.register_blueprint(myspotify)
-app.register_blueprint(myblockchain)
-app.register_blueprint(myevents)
-app.register_blueprint(myauth)
-app.register_blueprint(mycollegiate)
 
 
 @app.after_request

@@ -59,6 +59,12 @@ export class DevEnv {
     }
   }
 
+  resumeService = {
+    submitFormToAnalyzeResume:new WMLEndpoint({
+      url:()=> this.backendDomain0 + "/resume/analyze"
+    })
+  }
+
   constructor(){
     // traverseClassAndRemoveAutomationForProduction(this)
   }

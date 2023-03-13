@@ -10,9 +10,7 @@
         "reveal": "always",
         "panel": "new"
       },
-      // "runOptions": {
-      //   "runOn": "folderOpen"
-      // }
+
     },
     {
       "label": "pushing work to git remote",
@@ -149,9 +147,6 @@
         "panel": "new",
       },
       "promptOnClose": false,
-      "runOptions": {
-        "runOn": "folderOpen",
-      }
     },
     {
       "label": "frontend Angular: uninstall external angular project",
@@ -164,9 +159,6 @@
         "panel": "new"
       },
       "promptOnClose": false,
-      "runOptions": {
-        "runOn": "folderOpen"
-      }
     },
     {
       "label": "Run: Start Docker MSSQL Container",
@@ -175,11 +167,12 @@
       "group": "none",
       "presentation": {
         "reveal": "always",
-        "panel": "new"
+        "panel": "new",
+        "close": true
       },
-      // "runOptions": {
-      //   "runOn": "folderOpen"
-      // }
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
     },
     {
       "label": "Run: flask backend",
@@ -204,6 +197,17 @@
       "windows": {
         "command": ".\\ignore\\${input:current_user_0}\\run_backend_test.ps1 ${input:current_user_0}"
       },
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "backend flask: install app deps",
+      "type": "shell",
+      "command": " cd apps\\zero\\backend\\flask\\dev; pip install -r requirements.txt --upgrade --target .\\site-packages\\${input:backend_flask_install_app_deps_0}",
+
       "group": "none",
       "presentation": {
         "reveal": "always",
@@ -245,6 +249,16 @@
     }
   ],
   "inputs": [
+    {
+      "id": "backend_flask_install_app_deps_0",
+      "description": "whether to install on windows mac os or linux (choose linux for macos)",
+      "default": "Windmillcode",
+      "type": "pickString",
+      "options": [
+        "windows",
+        "linux"
+      ]
+    },
     {
       "id": "external_angular_project0",
       "description": "provide the package name",
