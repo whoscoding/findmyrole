@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { readFileContent } from '@core/utility/common-utils';
 import { UtilityService } from '@core/utility/utility.service';
 import { ENV } from '@env/environment';
-import { iif, map, of, tap } from 'rxjs';
+import { WMLFileUploadItem } from '@windmillcode/wml-file-manager';
+import { concatMap, iif, map, Observable, of, take, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,18 +21,36 @@ export class ResumeService {
     return iif(
       ()=>ENV.resumeService.submitFormToAnalyzeResume.automate,
       of(new SubmitFormToAnalyzeResumeUIResponseBody()),
-      this.http
-      .post(ENV.resumeService.submitFormToAnalyzeResume.url(),apiBody)
-      .pipe(raw ? tap() : map(submitFormToAnalyzeResumeSuccess))
+
+      submitFormToAnalyzeResumeLoad(uiBody)
+      .pipe(
+        concatMap((apiBody)=>{
+          return       this.http
+          .post(ENV.resumeService.submitFormToAnalyzeResume.url(),apiBody)
+          .pipe(raw ? tap() : map(submitFormToAnalyzeResumeSuccess))
+        })
+      )
     )
   }
 
 }
 
-let submitFormToAnalyzeResumeLoad  = (uiBody:SubmitFormToAnalyzeResumeUIRequestBody): SubmitFormToAnalyzeResumeAPIRequestBody=>{
+let submitFormToAnalyzeResumeLoad  = (uiBody:SubmitFormToAnalyzeResumeUIRequestBody): Observable<SubmitFormToAnalyzeResumeAPIRequestBody>=>{
 
-  let apiBody = new SubmitFormToAnalyzeResumeAPIRequestBody({data:uiBody})
-  return apiBody
+  let apiBody = new SubmitFormToAnalyzeResumeAPIRequestBody({})
+  // @ts-ignore
+  apiBody.data = {
+    jobDesc : uiBody.jobDesc
+  }
+
+  return readFileContent(uiBody.resume[0].file)
+  .pipe(
+    take(1),
+    map((res)=>{
+      apiBody.data.resume=res.content
+      return apiBody
+    })
+  )
 }
 
 let submitFormToAnalyzeResumeSuccess = (apiBody:SubmitFormToAnalyzeResumeAPIResponseBody):SubmitFormToAnalyzeResumeUIResponseBody=>{
@@ -49,7 +69,7 @@ export class SubmitFormToAnalyzeResumeUIRequestBody {
     )
   }
   jobDesc: string
-  resume: Array<any>
+  resume: Array<WMLFileUploadItem>
 }
 
 export class SubmitFormToAnalyzeResumeUIResponseBody {
@@ -75,7 +95,7 @@ export class SubmitFormToAnalyzeResumeAPIRequestBody {
   }
   data: {
     jobDesc: string
-    resume: Array<any>
+    resume: string
   }
 }
 

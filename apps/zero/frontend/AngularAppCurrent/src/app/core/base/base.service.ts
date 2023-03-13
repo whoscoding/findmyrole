@@ -44,6 +44,7 @@ export class BaseService {
   closeOverlayLoading = finalize(()=>{
 
     this.toggleOverlayLoadingSubj.next(false)
+    console.log("fire")
   })
   openOverlayLoading = ()=>{
     this.toggleOverlayLoadingSubj.next(true)

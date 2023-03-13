@@ -139,10 +139,13 @@ export class ProfileOneMainComponent  {
     .pipe(
       takeUntil(this.ngUnsub),
       tap(this.baseService.openOverlayLoading),
-      tap(()=>{
-        this.baseService.generateWMLNote("global.formSubmitSuccess")
-      }),
-      this.baseService.closeOverlayLoading
+      this.baseService.closeOverlayLoading,
+      tap({
+        next:()=>{
+          this.baseService.generateWMLNote("global.formSubmitSuccess")
+        }
+      })
+
     )
     .subscribe()
 
