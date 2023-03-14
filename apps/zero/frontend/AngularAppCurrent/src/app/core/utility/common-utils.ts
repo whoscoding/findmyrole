@@ -70,7 +70,14 @@ export let readFileContent = (
 
   return fromEvent(reader as any, 'load').pipe(
     map(() => {
-      let content = reader.result.toString();
+      let content
+      if(readPredicate === "readAsBinaryString"){
+        // @ts-ignore
+        content = btoa(reader.result);
+      }
+      else{
+        content = reader.result.toString();
+      }
 
       return { content, file };
     })

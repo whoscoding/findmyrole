@@ -17,7 +17,7 @@ export class ResumeService {
   ) { }
 
   submitFormToAnalyzeResume = (uiBody:SubmitFormToAnalyzeResumeUIRequestBody,raw = false)=>{
-    let apiBody = submitFormToAnalyzeResumeLoad(uiBody)
+
     return iif(
       ()=>ENV.resumeService.submitFormToAnalyzeResume.automate,
       of(new SubmitFormToAnalyzeResumeUIResponseBody()),
@@ -25,7 +25,7 @@ export class ResumeService {
       submitFormToAnalyzeResumeLoad(uiBody)
       .pipe(
         concatMap((apiBody)=>{
-          return       this.http
+          return this.http
           .post(ENV.resumeService.submitFormToAnalyzeResume.url(),apiBody)
           .pipe(raw ? tap() : map(submitFormToAnalyzeResumeSuccess))
         })
@@ -43,10 +43,11 @@ let submitFormToAnalyzeResumeLoad  = (uiBody:SubmitFormToAnalyzeResumeUIRequestB
     jobDesc : uiBody.jobDesc
   }
 
-  return readFileContent(uiBody.resume[0].file)
+  return readFileContent(uiBody.resume[0].file,"readAsBinaryString")
   .pipe(
     take(1),
     map((res)=>{
+      console.log(res)
       apiBody.data.resume=res.content
       return apiBody
     })

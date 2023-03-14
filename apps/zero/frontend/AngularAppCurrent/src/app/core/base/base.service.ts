@@ -42,9 +42,7 @@ export class BaseService {
 
   updateOverlayLoadingText:string = "global.overlayLoading"
   closeOverlayLoading = finalize(()=>{
-
     this.toggleOverlayLoadingSubj.next(false)
-    console.log("fire")
   })
   openOverlayLoading = ()=>{
     this.toggleOverlayLoadingSubj.next(true)
